@@ -11,18 +11,32 @@ import java.util.List;
  */
 public class DataStorage
 {
-    public static  List<Member> members = new ArrayList<>();
-    public  static  List<Booking> bookings = new ArrayList<>();
-    
-    public  static  void addMember(Member member)
+
+    public static List<Member> members = new ArrayList<>();
+    public static List<Booking> bookings = new ArrayList<>();
+
+    public static void addMember(Member member)
     {
         members.add(member);
     }
-    
-    public  static  void addBooking(Booking booking)
+
+    public static void addBooking(Booking booking)
     {
         bookings.add(booking);
     }
-    
-    
+
+    public static Member findMemberByNumber(String inputNumberNumber)
+    {
+        for (Member member : members)
+        {
+            if (member.getMemberNumber().equals(inputNumberNumber))
+            {
+                return member;
+            }
+
+        }
+
+        return null;
+    }
+
 }
