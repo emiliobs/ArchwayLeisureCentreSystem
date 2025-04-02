@@ -43,6 +43,11 @@ public class DataStorage
     {
         return members;
     }
+    
+    public static  List<Booking> getBooking()
+    {
+        return bookings;
+    }
 
     public static void preloadMembers()
     {
@@ -57,6 +62,21 @@ public class DataStorage
         members.add(new Member("M008", "Henry", "Moore", "henrySecure", "Yes", "Team Gamma", "6667778888", "henry@mail.com", "2021-07-30", "654 Court, Belfast", "1993/03/14"));
         members.add(new Member("M009", "Isla", "Thomas", "islaPass", "Yes", "Team Delta", "7778889999", "isla@mail.com", "2020-04-25", "987 Drive, Newcastle", "1999/01/05"));
         members.add(new Member("M010", "Jack", "White", "jack321", "Yes", "Team Omega", "8889990000", "jack@mail.com", "2018-12-10", "159 Walk, Bristol", "1989/10/29"));
+    }
+    
+    public static void preloadBooking()
+    {
+        bookings.add(new Booking("5:00 PM", "Pitch 5", "M55555", "Emilio Barrera", ""));
+        bookings.add(new Booking("10:00 AM", "Pitch 1", "M001", "Alice Johnson",""));
+        bookings.add(new Booking("11:00 AM", "Pitch 2", "M002", "Bob Smith",""));
+        bookings.add(new Booking("12:00 PM", "Pitch 3", "M003", "Charlie Brown",""));
+        bookings.add(new Booking("01:00 PM", "Pitch 1", "M004", "David Miller",""));
+        bookings.add(new Booking("02:00 PM", "Pitch 2", "M005", "Ella Davis",""));
+        bookings.add(new Booking("03:00 PM", "Pitch 3", "M006", "Frank Wilson",""));
+        bookings.add(new Booking("04:00 PM", "Pitch 1", "M007", "Grace Anderson",""));
+        bookings.add(new Booking("05:00 PM", "Pitch 2", "M008", "Henry Moore",""));
+        bookings.add(new Booking("06:00 PM", "Pitch 3", "M009", "Isla Thomas",""));
+        bookings.add(new Booking("07:00 PM", "Pitch 1", "M010", "Jack White",""));
     }
 
 }

@@ -262,7 +262,7 @@ public class RegistrationPage extends javax.swing.JFrame
                     .addComponent(txtJoinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTeamNAme, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTeamNAme, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(290, 290, 290)
@@ -309,7 +309,9 @@ public class RegistrationPage extends javax.swing.JFrame
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel10))
+                                .addComponent(jLabel10)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel11))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,10 +322,8 @@ public class RegistrationPage extends javax.swing.JFrame
                                 .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtTeamNAme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel11))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTeamNAme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
@@ -418,7 +418,7 @@ public class RegistrationPage extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -483,6 +483,8 @@ public class RegistrationPage extends javax.swing.JFrame
             });
 
             JOptionPane.showMessageDialog(this, "Member registered successfully!");
+            
+            cleanFieldsMembers();
 
         }
         catch (Exception e)
@@ -512,17 +514,7 @@ public class RegistrationPage extends javax.swing.JFrame
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCleanActionPerformed
     {//GEN-HEADEREND:event_btnCleanActionPerformed
-        txtMemberNumber.setText("");
-        txtFirsNAme.setText("");
-        txtLAstName.setText("");
-        txtPassword.setText("");
-        txtTeamNAme.setText("");
-        txtPhone.setText("");
-        txtEmail.setText("");
-        txtJoinDate.setText("");
-        txtAddress.setText("");
-        txtDateOfBirth.setText("");
-        checkboxTeamOrganizer.setState(false); // Reset the AWT Checkbox to unchecked
+        cleanFieldsMembers();
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
@@ -534,6 +526,22 @@ public class RegistrationPage extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    
+    private void cleanFieldsMembers()
+    {
+       txtMemberNumber.setText("");
+        txtFirsNAme.setText("");
+        txtLAstName.setText("");
+        txtPassword.setText("");
+        txtTeamNAme.setText("");
+        txtPhone.setText("");
+        txtEmail.setText("");
+        txtJoinDate.setText("");
+        txtAddress.setText("");
+        txtDateOfBirth.setText("");
+        checkboxTeamOrganizer.setState(false); // Reset the AWT Checkbox to unchecked
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -628,5 +636,7 @@ public class RegistrationPage extends javax.swing.JFrame
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtTeamNAme;
     // End of variables declaration//GEN-END:variables
+
+    
 
 }

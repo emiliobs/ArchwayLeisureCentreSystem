@@ -1,4 +1,12 @@
 package Presentation;
+
+import Businness.Booking;
+import Businness.Member;
+import Data.DataStorage;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Emilio
@@ -6,12 +14,26 @@ package Presentation;
 public class BookingPage extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form BookingPage
-     */
+    ArrayList<Booking> bookingList = new ArrayList();
+    DefaultTableModel tableModel;
+
     public BookingPage()
     {
         initComponents();
+
+        //Table
+        String[] columns =
+        {
+            "Member Number", "Name", "Booking Date", "Time", "Pitch"
+        };
+
+        tableModel = new DefaultTableModel(columns, 0);
+
+        DataStorage.preloadBooking();
+        updateTable();
+
+        tblPitchBooking.setModel(tableModel);
+
     }
 
     /**
@@ -44,7 +66,7 @@ public class BookingPage extends javax.swing.JFrame
         tblPitchBooking = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtJoinDate = new javax.swing.JTextField();
+        txtBookinDate = new javax.swing.JTextField();
         btnClean = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,8 +168,8 @@ public class BookingPage extends javax.swing.JFrame
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
         jLabel9.setText("Booking Date (dd/mm/yyyy):");
 
-        txtJoinDate.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        txtJoinDate.setForeground(new java.awt.Color(255, 51, 51));
+        txtBookinDate.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtBookinDate.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -176,7 +198,7 @@ public class BookingPage extends javax.swing.JFrame
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtJoinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtBookinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -207,7 +229,7 @@ public class BookingPage extends javax.swing.JFrame
                             .addComponent(jLabel6))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtJoinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBookinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,30 +332,78 @@ public class BookingPage extends javax.swing.JFrame
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalirActionPerformed
     {//GEN-HEADEREND:event_btnSalirActionPerformed
-        
+
         LoginPage loginPage = new LoginPage();
-       loginPage.setLocationRelativeTo(null);
-       loginPage.setVisible(true);
+        loginPage.setLocationRelativeTo(null);
+        loginPage.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBookingActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnBookingActionPerformed
     {//GEN-HEADEREND:event_btnBookingActionPerformed
-        WelcomePage1 welcomePage1 = new WelcomePage1();
-        welcomePage1.setLocationRelativeTo(null);
-        welcomePage1.setVisible(true);
+        try
+        {
+            String memberNumber = txtMemberNumber.getText();
+            String pitch= txtPtich.getText();
+            String memberFullName = txtFullName.getText();
+            String time = txtTime.getText();
+            String bookinDate = txtBookinDate.getText();
+            
 
-        dispose();
+            // Validate Fields
+            if (memberNumber.isEmpty() || pitch.isEmpty() || memberFullName.isEmpty() || time.isEmpty()
+                    || bookinDate.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+           Booking booking = new Booking(time, pitch, memberNumber, memberFullName, bookinDate);
+
+            //memberList.add(member);
+            DataStorage.addBooking(booking);
+
+            tableModel.addRow(new Object[]
+            {
+                booking.getBookingDate(), booking.getMemberFullname(), booking.getMemberNumber(), booking.getPitch(), booking.getTime()
+            });
+
+            JOptionPane.showMessageDialog(this, "Booking registered successfully!");
+            
+            cleanFieldsBooking();
+
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Error registered booking" + e.getMessage());
+        }
     }//GEN-LAST:event_btnBookingActionPerformed
 
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCleanActionPerformed
     {//GEN-HEADEREND:event_btnCleanActionPerformed
-       txtFullName.setText("");
-       txtJoinDate.setText("");
-       txtMemberNumber.setText("");
-       txtPtich.setText("");
-       txtTime.setText("");
+        cleanFieldsBooking();
     }//GEN-LAST:event_btnCleanActionPerformed
+
+    private void updateTable()
+    {
+        tableModel.setRowCount(0);
+        for (Booking booking : DataStorage.getBooking())
+        {
+            tableModel.addRow(new Object[]
+            {
+                booking.getMemberFullname(), booking.getMemberNumber(), booking.getPitch(), booking.getTime(), booking.getBookingDate()
+            });
+        }
+    }
+    
+    private void cleanFieldsBooking()
+    {
+        txtFullName.setText("");
+        txtBookinDate.setText("");
+        txtMemberNumber.setText("");
+        txtPtich.setText("");
+        txtTime.setText("");
+    }
 
     /**
      * @param args the command line arguments
@@ -402,10 +472,12 @@ public class BookingPage extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tblPitchBooking;
+    private javax.swing.JTextField txtBookinDate;
     private javax.swing.JTextField txtFullName;
-    private javax.swing.JTextField txtJoinDate;
     private javax.swing.JTextField txtMemberNumber;
     private javax.swing.JTextField txtPtich;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
+
+    
 }
