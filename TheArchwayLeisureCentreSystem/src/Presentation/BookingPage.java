@@ -227,19 +227,18 @@ public class BookingPage extends javax.swing.JFrame
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(407, 407, 407)
-                .addComponent(btnBooking)
-                .addGap(200, 200, 200)
-                .addComponent(btnSalir)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(249, 249, 249)
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(501, 501, 501)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(451, 451, 451)
+                        .addComponent(btnBooking)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -253,11 +252,11 @@ public class BookingPage extends javax.swing.JFrame
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBooking)
-                    .addComponent(btnSalir))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(btnSalir)
+                    .addComponent(btnBooking))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -293,6 +292,10 @@ public class BookingPage extends javax.swing.JFrame
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalirActionPerformed
     {//GEN-HEADEREND:event_btnSalirActionPerformed
+        
+        LoginPage loginPage = new LoginPage();
+       loginPage.setLocationRelativeTo(null);
+       loginPage.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 

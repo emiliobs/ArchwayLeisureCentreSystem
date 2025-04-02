@@ -1,5 +1,10 @@
 package Presentation;
 
+import Businness.Member;
+import Data.DataStorage;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Emilio
@@ -13,6 +18,9 @@ public class LoginPage extends javax.swing.JFrame
     public LoginPage()
     {
         initComponents();
+
+        DataStorage.preloadMembers();
+
     }
 
     /**
@@ -31,7 +39,7 @@ public class LoginPage extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
-        txtFullName = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtMemberNumber = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -60,8 +68,8 @@ public class LoginPage extends javax.swing.JFrame
         jPanel3.setBackground(new java.awt.Color(0, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 51, 51), 4, true), "Enter Data to Login.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 18), new java.awt.Color(255, 51, 0))); // NOI18N
 
-        txtFullName.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        txtFullName.setForeground(new java.awt.Color(255, 51, 51));
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(255, 51, 51));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 51, 51));
@@ -108,18 +116,19 @@ public class LoginPage extends javax.swing.JFrame
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLogin)
-                            .addComponent(jLabel4))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMemberNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(btnSalir)))))
+                        .addComponent(txtMemberNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(370, 370, 370))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(btnLogin)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,13 +139,13 @@ public class LoginPage extends javax.swing.JFrame
                     .addComponent(txtMemberNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnSalir))
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -213,9 +222,43 @@ public class LoginPage extends javax.swing.JFrame
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
     {//GEN-HEADEREND:event_btnLoginActionPerformed
-        WelcomePage1 welcomePage1 = new WelcomePage1();
-        welcomePage1.setLocationRelativeTo(null);
-        welcomePage1.setVisible(true);
+//        WelcomePage1 welcomePage1 = new WelcomePage1();
+//        welcomePage1.setLocationRelativeTo(null);
+//        welcomePage1.setVisible(true);
+
+        try
+        {
+            String memberNumber = txtMemberNumber.getText().trim().toUpperCase();
+            String password = txtPassword.getText().trim().toUpperCase();
+
+            if (memberNumber.isEmpty() || password.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "Sorry. All fields must be filled.");
+                return;
+            }
+
+            for (Member member : members)
+            {
+                if (member.getMemberNumber().equals(memberNumber) && member.getPassword().equals(password))
+                {
+                    JOptionPane.showMessageDialog(null, "Login successful!");
+                    BookingPage bookingPage = new BookingPage();
+                    bookingPage.setLocationRelativeTo(null);
+                    bookingPage.setVisible(true);
+                    dispose();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Sorry. Invalid Member Number or Password.");
+                    return;
+                }
+            }
+
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
 
         dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -280,7 +323,7 @@ public class LoginPage extends javax.swing.JFrame
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtMemberNumber;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
