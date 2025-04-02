@@ -13,7 +13,7 @@ public class Member
     private String firstName;
     private String LastName;
     private String password;
-    private boolean isTeamOrganiser;
+    private String isTeamOrganiser;
     private String teamName;
     private String  phone;
     private String email;
@@ -27,7 +27,7 @@ public class Member
     }
 
     public Member(String memberNumber, String firstName, String LastName, String password, 
-                             boolean isTeamOrganiser, String teamName, String phone, String email, String joinDate, 
+                            String isTeamOrganiser, String teamName, String phone, String email, String joinDate, 
                              String address, String DateOfBirth)
     {
         this.memberNumber = memberNumber;
@@ -84,12 +84,12 @@ public class Member
         this.password = password;
     }
 
-    public boolean isIsTeamOrganiser()
+    public String isIsTeamOrganiser()
     {
         return isTeamOrganiser;
     }
 
-    public void setIsTeamOrganiser(boolean isTeamOrganiser)
+    public void setIsTeamOrganiser(String isTeamOrganiser)
     {
         this.isTeamOrganiser = isTeamOrganiser;
     }

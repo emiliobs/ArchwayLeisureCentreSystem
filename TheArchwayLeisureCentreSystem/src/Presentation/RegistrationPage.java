@@ -1,5 +1,13 @@
 package Presentation;
 
+import Businness.Member;
+import Data.DataStorage;
+import java.util.ArrayList;
+import javax.activation.DataSource;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author Emilio
@@ -7,12 +15,26 @@ package Presentation;
 public class RegistrationPage extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form RegistrationPage
-     */
+    ArrayList<Member> memberList = new ArrayList();
+    DefaultTableModel tableModel;
+
     public RegistrationPage()
     {
         initComponents();
+
+        //Table
+        String[] columns =
+        {
+            "Member Number", "First Name", "Last Name", "Date of Birth", "Email", "Address", "Join Date", "Team Name", "Team Organizer"
+        };
+
+        tableModel = new DefaultTableModel(columns, 0);
+
+        DataStorage.preloadMembers();
+        updateTable();
+
+        tblREgisterMembers.setModel(tableModel);
+
     }
 
     /**
@@ -54,10 +76,12 @@ public class RegistrationPage extends javax.swing.JFrame
         jLabel12 = new javax.swing.JLabel();
         txtPhone = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        checkboxTEamOrganizer = new java.awt.Checkbox();
+        checkboxTeamOrganizer = new java.awt.Checkbox();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblREgisterMembers = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
+        btnClean = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Register Page!");
@@ -71,7 +95,7 @@ public class RegistrationPage extends javax.swing.JFrame
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel1.setText("REGISTER");
+        jLabel1.setText("Member Registration");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 0));
@@ -189,20 +213,20 @@ public class RegistrationPage extends javax.swing.JFrame
         jLabel13.setForeground(new java.awt.Color(255, 51, 51));
         jLabel13.setText("Team Organiser:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblREgisterMembers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String []
             {
-                "Member Number", "Full Name", "Date of Birth", "Join Date"
+                "Member Number", "Name", "Date of Birth", "Email", "Address", "Join Date", "Team Name", "Team Organizer"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblREgisterMembers);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 51, 51));
@@ -228,7 +252,7 @@ public class RegistrationPage extends javax.swing.JFrame
                     .addComponent(jLabel13))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkboxTEamOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkboxTeamOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMemberNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFirsNAme, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLAstName, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,27 +265,24 @@ public class RegistrationPage extends javax.swing.JFrame
                     .addComponent(txtTeamNAme, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(290, 290, 290)
+                        .addComponent(jLabel14))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(jLabel14)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1011, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(txtMemberNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtMemberNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -306,35 +327,62 @@ public class RegistrationPage extends javax.swing.JFrame
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
-                            .addComponent(checkboxTEamOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(checkboxTeamOrganizer, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
+
+        btnClean.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnClean.setForeground(new java.awt.Color(255, 51, 0));
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clean.png"))); // NOI18N
+        btnClean.setText("Clean");
+        btnClean.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCleanActionPerformed(evt);
+            }
+        });
+
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 51, 0));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/login.png"))); // NOI18N
+        btnLogin.setText("Login To Booking");
+        btnLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnLoginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(486, 486, 486))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(159, 159, 159))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(408, 408, 408)
+                        .addGap(274, 274, 274))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(469, 469, 469))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnRegister)
-                        .addGap(130, 130, 130)
-                        .addComponent(btnSalir)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(84, 84, 84)
+                        .addComponent(btnLogin)
+                        .addGap(74, 74, 74)
+                        .addComponent(btnClean)
+                        .addGap(71, 71, 71)
+                        .addComponent(btnSalir)
+                        .addGap(323, 323, 323))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,8 +398,10 @@ public class RegistrationPage extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister)
-                    .addComponent(btnSalir))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(btnClean)
+                    .addComponent(btnSalir)
+                    .addComponent(btnLogin))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -361,14 +411,14 @@ public class RegistrationPage extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -396,17 +446,93 @@ public class RegistrationPage extends javax.swing.JFrame
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
     {//GEN-HEADEREND:event_btnRegisterActionPerformed
-        WelcomePage1 welcomePage1 = new WelcomePage1();
-        welcomePage1.setLocationRelativeTo(null);
-        welcomePage1.setVisible(true);
+        try
+        {
+            String memberNumber = txtMemberNumber.getText();
+            String firstName = txtFirsNAme.getText();
+            String LastName = txtLAstName.getText();
+            String fullName = firstName + LastName;
+            String password = txtPassword.getText();
+            String isTeamOrganiser = checkboxTeamOrganizer.getState() ? "Yes" : "No";
+            String teamName = txtTeamNAme.getText();
+            String phone = txtEmail.getText();
+            String email = txtEmail.getText();
+            String joinDate = txtJoinDate.getText();
+            String address = txtAddress.getText();
+            String DateOfBirth = txtDateOfBirth.getText();
 
-        dispose();
+            // Validate Fields
+            if (memberNumber.isEmpty() || firstName.isEmpty() || LastName.isEmpty() || password.isEmpty()
+                    || teamName.isEmpty() || phone.isEmpty() || email.isEmpty() || joinDate.isEmpty() || address.isEmpty()
+                    || DateOfBirth.isEmpty())
+            {
+                JOptionPane.showMessageDialog(null, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            Member member = new Member(memberNumber, firstName, LastName, password, isTeamOrganiser, teamName, phone, email, joinDate, address, DateOfBirth);
+
+            //memberList.add(member);
+            DataStorage.addMember(member);
+
+            tableModel.addRow(new Object[]
+            {
+                member.getMemberNumber(), member.getFirstName(),
+                member.getLastName(), member.getDateOfBirth(), member.getEmail(),
+                member.getAddress(), member.getJoinDate(), member.getTeamName(), member.isIsTeamOrganiser()
+            });
+
+            JOptionPane.showMessageDialog(this, "Member registered successfully!");
+
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Error registered member" + e.getMessage());
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void updateTable()
+    {
+        tableModel.setRowCount(0);
+        for (Member member : Data.DataStorage.getMembers())
+        {
+            tableModel.addRow(new Object[]
+            {
+                member.getMemberNumber(), member.getFirstName(),
+                member.getLastName(), member.getDateOfBirth(), member.getEmail(),
+                member.getAddress(), member.getJoinDate(), member.getTeamName(), member.isIsTeamOrganiser()
+            });
+        }
+    }
 
     private void txtTeamNAmeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtTeamNAmeActionPerformed
     {//GEN-HEADEREND:event_txtTeamNAmeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTeamNAmeActionPerformed
+
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCleanActionPerformed
+    {//GEN-HEADEREND:event_btnCleanActionPerformed
+        txtMemberNumber.setText("");
+        txtFirsNAme.setText("");
+        txtLAstName.setText("");
+        txtPassword.setText("");
+        txtTeamNAme.setText("");
+        txtPhone.setText("");
+        txtEmail.setText("");
+        txtJoinDate.setText("");
+        txtAddress.setText("");
+        txtDateOfBirth.setText("");
+        checkboxTeamOrganizer.setState(false); // Reset the AWT Checkbox to unchecked
+    }//GEN-LAST:event_btnCleanActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
+    {//GEN-HEADEREND:event_btnLoginActionPerformed
+        LoginPage loginPage = new LoginPage();
+        loginPage.setLocationRelativeTo(null);
+        loginPage.setVisible(true);
+
+        dispose();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,24 +552,32 @@ public class RegistrationPage extends javax.swing.JFrame
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         }
         catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(RegistrationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrationPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         }
         catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(RegistrationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrationPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         }
         catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(RegistrationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrationPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         }
         catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(RegistrationPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrationPage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -458,9 +592,11 @@ public class RegistrationPage extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClean;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSalir;
-    private java.awt.Checkbox checkboxTEamOrganizer;
+    private java.awt.Checkbox checkboxTeamOrganizer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -480,7 +616,7 @@ public class RegistrationPage extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblREgisterMembers;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtDateOfBirth;
     private javax.swing.JTextField txtEmail;
@@ -492,4 +628,5 @@ public class RegistrationPage extends javax.swing.JFrame
     private javax.swing.JTextField txtPhone;
     private javax.swing.JTextField txtTeamNAme;
     // End of variables declaration//GEN-END:variables
+
 }

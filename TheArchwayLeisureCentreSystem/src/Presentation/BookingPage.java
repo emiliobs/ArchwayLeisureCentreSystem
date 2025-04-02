@@ -41,10 +41,11 @@ public class BookingPage extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         txtPtich = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPitchBooking = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtJoinDate = new javax.swing.JTextField();
+        btnClean = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Booking Page!");
@@ -122,7 +123,7 @@ public class BookingPage extends javax.swing.JFrame
         txtPtich.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         txtPtich.setForeground(new java.awt.Color(255, 51, 51));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPitchBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null, null, null, null},
@@ -135,7 +136,7 @@ public class BookingPage extends javax.swing.JFrame
                 "Member Number", "Name", "Booking Date", "Time", "Pitch"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPitchBooking);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 51, 51));
@@ -219,6 +220,18 @@ public class BookingPage extends javax.swing.JFrame
                 .addGap(0, 31, Short.MAX_VALUE))
         );
 
+        btnClean.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        btnClean.setForeground(new java.awt.Color(255, 51, 0));
+        btnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clean.png"))); // NOI18N
+        btnClean.setText("Clean");
+        btnClean.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCleanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -239,9 +252,11 @@ public class BookingPage extends javax.swing.JFrame
                         .addGap(481, 481, 481))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnBooking)
-                        .addGap(131, 131, 131)
+                        .addGap(111, 111, 111)
+                        .addComponent(btnClean)
+                        .addGap(123, 123, 123)
                         .addComponent(btnSalir)
-                        .addGap(424, 424, 424))))
+                        .addGap(251, 251, 251))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,8 +272,9 @@ public class BookingPage extends javax.swing.JFrame
                 .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
-                    .addComponent(btnBooking))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBooking)
+                    .addComponent(btnClean))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -309,6 +325,15 @@ public class BookingPage extends javax.swing.JFrame
 
         dispose();
     }//GEN-LAST:event_btnBookingActionPerformed
+
+    private void btnCleanActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCleanActionPerformed
+    {//GEN-HEADEREND:event_btnCleanActionPerformed
+       txtFullName.setText("");
+       txtJoinDate.setText("");
+       txtMemberNumber.setText("");
+       txtPtich.setText("");
+       txtTime.setText("");
+    }//GEN-LAST:event_btnCleanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,6 +386,7 @@ public class BookingPage extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBooking;
+    private javax.swing.JButton btnClean;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
@@ -375,7 +401,7 @@ public class BookingPage extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPitchBooking;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtJoinDate;
     private javax.swing.JTextField txtMemberNumber;
