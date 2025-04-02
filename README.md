@@ -1,8 +1,16 @@
 # Archway Leisure Centre System
  ## Welcome Page
- ![image](https://github.com/user-attachments/assets/8c1ac310-da87-4eed-ab9c-e60618735e7b)
+ ![image](https://github.com/user-attachments/assets/b6ee44d7-d3e5-4400-acba-922059df239e)
+
  ## Register Page
- ![image](https://github.com/user-attachments/assets/9fbce68d-7d88-4168-ba16-2efc7055c6c0)
+![image](https://github.com/user-attachments/assets/44a5043d-d58d-4a94-bcc7-c80426e56894)
+
+
  ## Login Page
- ![image](https://github.com/user-attachments/assets/68029597-0d69-4913-bae8-78150c132c9d)
+![image](https://github.com/user-attachments/assets/89b5bb29-7b42-43ee-8a07-681af82254b0)
+
+ ## Booking Page!
+ ![image](https://github.com/user-attachments/assets/921709af-ea67-434b-b798-bccbaf9e3e3b)
+
+
 
