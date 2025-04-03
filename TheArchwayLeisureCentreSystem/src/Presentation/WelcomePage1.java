@@ -66,7 +66,7 @@ public class WelcomePage1 extends javax.swing.JFrame // Declares a class that ex
         btnSalir.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 0));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-salir-48.png"))); // NOI18N
-        btnSalir.setText("Salir");
+        btnSalir.setText("Exit");
         btnSalir.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)

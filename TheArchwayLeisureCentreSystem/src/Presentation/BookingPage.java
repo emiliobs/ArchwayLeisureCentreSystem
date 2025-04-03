@@ -61,12 +61,12 @@ public class BookingPage extends javax.swing.JFrame
         jLabel5 = new javax.swing.JLabel();
         txtTime = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtPtich = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPitchBooking = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtBookinDate = new javax.swing.JTextField();
+        jComboBoxPitchNumber = new javax.swing.JComboBox<>();
         btnClean = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,7 +93,7 @@ public class BookingPage extends javax.swing.JFrame
         btnSalir.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 0));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-salir-48.png"))); // NOI18N
-        btnSalir.setText("Salir");
+        btnSalir.setText("Exit");
         btnSalir.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -133,17 +133,15 @@ public class BookingPage extends javax.swing.JFrame
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel5.setText("Time:");
+        jLabel5.setText("Time (hh:mm AM/PM):");
 
         txtTime.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         txtTime.setForeground(new java.awt.Color(255, 51, 51));
+        txtTime.setText("(hh/mm AM/PM)");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 51, 51));
         jLabel6.setText("Full Name:");
-
-        txtPtich.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        txtPtich.setForeground(new java.awt.Color(255, 51, 51));
 
         tblPitchBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
@@ -170,14 +168,29 @@ public class BookingPage extends javax.swing.JFrame
 
         txtBookinDate.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         txtBookinDate.setForeground(new java.awt.Color(255, 51, 51));
+        txtBookinDate.setText("(dd/mm/yyyy)");
+        txtBookinDate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtBookinDateActionPerformed(evt);
+            }
+        });
+
+        jComboBoxPitchNumber.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jComboBoxPitchNumber.setForeground(new java.awt.Color(255, 51, 51));
+        jComboBoxPitchNumber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a Pitch", "Pitch 1", "Pitch 2", "Pitch 3", "Pitch 4", "Pitch 5" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(199, 199, 199))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -191,24 +204,21 @@ public class BookingPage extends javax.swing.JFrame
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtPtich, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtBookinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel3))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                                            .addComponent(jComboBoxPitchNumber, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(199, 199, 199))))
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +248,8 @@ public class BookingPage extends javax.swing.JFrame
                         .addGap(27, 27, 27)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(txtPtich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jComboBoxPitchNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(0, 31, Short.MAX_VALUE))
         );
 
@@ -344,7 +355,7 @@ public class BookingPage extends javax.swing.JFrame
         try
         {
             String memberNumber = txtMemberNumber.getText(); // Gets the member number from the txtMemberNumber field.
-            String pitch = txtPtich.getText(); // Gets the pitch from the txtPtich field.
+            String pitch = jComboBoxPitchNumber.getSelectedItem().toString(); // Gets the pitch from the txtPtich field.
             String memberFullName = txtFullName.getText(); // Gets the member's full name from the txtFullName field.
             String time = txtTime.getText(); // Gets the time from the txtTime field.
             String bookinDate = txtBookinDate.getText(); // Gets the booking date from the txtBookinDate field.
@@ -384,6 +395,11 @@ public class BookingPage extends javax.swing.JFrame
         cleanFieldsBooking(); // Calls the cleanFieldsBooking method to clear the input fields.
     }//GEN-LAST:event_btnCleanActionPerformed
 
+    private void txtBookinDateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtBookinDateActionPerformed
+    {//GEN-HEADEREND:event_txtBookinDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBookinDateActionPerformed
+
     private void updateTable()// Updates the table with the data from DataStorage.
     {
         tableModel.setRowCount(0); // Clears all rows from the table model.
@@ -402,7 +418,7 @@ public class BookingPage extends javax.swing.JFrame
         txtFullName.setText(""); // Clears the full name field.
         txtBookinDate.setText(""); // Clears the booking date field.
         txtMemberNumber.setText(""); // Clears the member number field.
-        txtPtich.setText(""); // Clears the pitch field.
+        jComboBoxPitchNumber.setSelectedIndex(0); // Clears the pitch field.
         txtTime.setText(""); // Clears the time field.
     }
 
@@ -459,6 +475,7 @@ public class BookingPage extends javax.swing.JFrame
     private javax.swing.JButton btnBooking;
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> jComboBoxPitchNumber;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -476,7 +493,6 @@ public class BookingPage extends javax.swing.JFrame
     private javax.swing.JTextField txtBookinDate;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtMemberNumber;
-    private javax.swing.JTextField txtPtich;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 

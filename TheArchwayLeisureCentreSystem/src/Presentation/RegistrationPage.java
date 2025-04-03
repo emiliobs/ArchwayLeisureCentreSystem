@@ -108,7 +108,7 @@ public class RegistrationPage extends javax.swing.JFrame // Defines a public cla
         btnSalir.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 51, 0));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-salir-48.png"))); // NOI18N
-        btnSalir.setText("Salir");
+        btnSalir.setText("Exit");
         btnSalir.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -170,6 +170,7 @@ public class RegistrationPage extends javax.swing.JFrame // Defines a public cla
 
         txtDateOfBirth.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         txtDateOfBirth.setForeground(new java.awt.Color(255, 51, 51));
+        txtDateOfBirth.setText("(dd/mm/yyyy)");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 51, 51));
@@ -198,6 +199,7 @@ public class RegistrationPage extends javax.swing.JFrame // Defines a public cla
 
         txtJoinDate.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         txtJoinDate.setForeground(new java.awt.Color(255, 51, 51));
+        txtJoinDate.setText("(dd/mm/yyyy)");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 51, 51));
