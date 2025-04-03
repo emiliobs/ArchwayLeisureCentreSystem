@@ -387,7 +387,7 @@ public class BookingPage extends javax.swing.JFrame
     private void updateTable()
     {
         tableModel.setRowCount(0);
-        for (Booking booking : DataStorage.getBooking())
+        for (Booking booking : DataStorage.getBookings())
         {
             tableModel.addRow(new Object[]
             {

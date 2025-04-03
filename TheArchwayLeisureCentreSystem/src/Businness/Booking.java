@@ -16,7 +16,7 @@ public class Booking
     {
     }
 
-    public Booking(String time, String pitch, String memberNumber, String memberFullname, String bookingDate)
+    public Booking(String memberNumber, String memberFullname,String bookingDate, String time, String pitch)
     {
         this.time = time;
         this.pitch = pitch;
