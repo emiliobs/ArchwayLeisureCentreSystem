@@ -44,7 +44,7 @@ public class DataStorage
         return members;
     }
     
-    public static  List<Booking> getBooking()
+    public static  List<Booking> getBookings()
     {
         return bookings;
     }
@@ -66,17 +66,17 @@ public class DataStorage
     
     public static void preloadBooking()
     {
-        bookings.add(new Booking("5:00 PM", "Pitch 5", "M55555", "Emilio Barrera", ""));
-        bookings.add(new Booking("10:00 AM", "Pitch 1", "M001", "Alice Johnson",""));
-        bookings.add(new Booking("11:00 AM", "Pitch 2", "M002", "Bob Smith",""));
-        bookings.add(new Booking("12:00 PM", "Pitch 3", "M003", "Charlie Brown",""));
-        bookings.add(new Booking("01:00 PM", "Pitch 1", "M004", "David Miller",""));
-        bookings.add(new Booking("02:00 PM", "Pitch 2", "M005", "Ella Davis",""));
-        bookings.add(new Booking("03:00 PM", "Pitch 3", "M006", "Frank Wilson",""));
-        bookings.add(new Booking("04:00 PM", "Pitch 1", "M007", "Grace Anderson",""));
-        bookings.add(new Booking("05:00 PM", "Pitch 2", "M008", "Henry Moore",""));
-        bookings.add(new Booking("06:00 PM", "Pitch 3", "M009", "Isla Thomas",""));
-        bookings.add(new Booking("07:00 PM", "Pitch 1", "M010", "Jack White",""));
+        bookings.add(new Booking("5:00 PM", "Pitch 5", "M55555", "Emilio Barrera", "04/04/2025"));
+        bookings.add(new Booking("10:00 AM", "Pitch 1", "M001", "Alice Johnson","04/04/2025"));
+        bookings.add(new Booking("11:00 AM", "Pitch 2", "M002", "Bob Smith","23/01/2025"));
+        bookings.add(new Booking("12:00 PM", "Pitch 3", "M003", "Charlie Brown","20/03/2025"));
+        bookings.add(new Booking("01:00 PM", "Pitch 1", "M004", "David Miller","14/01/2025"));
+        bookings.add(new Booking("02:00 PM", "Pitch 2", "M005", "Ella Davis","12/02/2025"));
+        bookings.add(new Booking("03:00 PM", "Pitch 3", "M006", "Frank Wilson","23/03/2025"));
+        bookings.add(new Booking("04:00 PM", "Pitch 1", "M007", "Grace Anderson","04/04/2025"));
+        bookings.add(new Booking("05:00 PM", "Pitch 2", "M008", "Henry Moore","03/04/2025"));
+        bookings.add(new Booking("06:00 PM", "Pitch 3", "M009", "Isla Thomas","02/04/2025"));
+        bookings.add(new Booking("07:00 PM", "Pitch 1", "M010", "Jack White","01/04/2025"));
     }
 
 }

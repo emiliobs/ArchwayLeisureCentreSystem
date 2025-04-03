@@ -358,14 +358,14 @@ public class BookingPage extends javax.swing.JFrame
                 return;
             }
 
-           Booking booking = new Booking(time, pitch, memberNumber, memberFullName, bookinDate);
+           Booking booking = new Booking( memberNumber, memberFullName,bookinDate, time, pitch);
 
             //memberList.add(member);
             DataStorage.addBooking(booking);
 
             tableModel.addRow(new Object[]
             {
-                booking.getBookingDate(), booking.getMemberFullname(), booking.getMemberNumber(), booking.getPitch(), booking.getTime()
+               booking.getMemberNumber(), booking.getMemberFullname(),  booking.getBookingDate(),booking.getTime(),booking.getPitch()
             });
 
             JOptionPane.showMessageDialog(this, "Booking registered successfully!");
@@ -391,7 +391,7 @@ public class BookingPage extends javax.swing.JFrame
         {
             tableModel.addRow(new Object[]
             {
-                booking.getMemberFullname(), booking.getMemberNumber(), booking.getPitch(), booking.getTime(), booking.getBookingDate()
+                booking.getMemberNumber(),booking.getMemberFullname(), booking.getBookingDate(), booking.getTime(),booking.getPitch() 
             });
         }
     }
