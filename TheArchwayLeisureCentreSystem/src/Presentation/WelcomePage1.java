@@ -1,17 +1,17 @@
-package Presentation;
+package Presentation; // Defines the package where this class belongs.
 
 /**
  *
  * @author Emilio
  */
-public class WelcomePage1 extends javax.swing.JFrame
+public class WelcomePage1 extends javax.swing.JFrame // Declares a class that extends JFrame, making it a GUI window.
 {
 
     public WelcomePage1()
     {
-        initComponents();
+        initComponents(); // Calls a method to initialize and set up the GUI components.
     }
-
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents()
@@ -188,32 +188,32 @@ public class WelcomePage1 extends javax.swing.JFrame
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalirActionPerformed
     {//GEN-HEADEREND:event_btnSalirActionPerformed
-        dispose();
+        dispose();// Closes the window.
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegisterActionPerformed
     {//GEN-HEADEREND:event_btnRegisterActionPerformed
-       RegistrationPage registrationPage = new RegistrationPage();
-       registrationPage.setLocationRelativeTo(null);
-       registrationPage.setVisible(true);
-       
-       dispose();
+        RegistrationPage registrationPage = new RegistrationPage(); // Creates an instance of the registration page.
+        registrationPage.setLocationRelativeTo(null); // Centers the window.
+        registrationPage.setVisible(true); // Displays the registration page.
+
+        dispose(); // Closes the current window.
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLoginActionPerformed
     {//GEN-HEADEREND:event_btnLoginActionPerformed
-        LoginPage loginPage = new LoginPage();
-        loginPage.setLocationRelativeTo(null);
-        loginPage.setVisible(true);
-        
-        dispose();
+        LoginPage loginPage = new LoginPage(); // Creates an instance of the login page.
+        loginPage.setLocationRelativeTo(null); // Centers the window.
+        loginPage.setVisible(true); // Displays the login page.
+
+        dispose(); // Closes the current window.
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public static void main(String args[])
     {
-        WelcomePage1 welcomePage1 = new WelcomePage1();
-        welcomePage1.setVisible(true);
-        welcomePage1.setLocationRelativeTo(null);
+        WelcomePage1 welcomePage1 = new WelcomePage1(); // Creates an instance of the welcome page.
+        welcomePage1.setVisible(true); // Makes the window visible.
+        welcomePage1.setLocationRelativeTo(null); // Centers the window.
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

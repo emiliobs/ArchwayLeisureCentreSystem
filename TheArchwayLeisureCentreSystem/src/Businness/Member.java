@@ -1,34 +1,44 @@
-package Businness;
+package Businness; // Defines the package name where this class belongs
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.ArrayList; // Imports ArrayList for managing bookings
+import java.util.List; // Imports List interface to store multiple bookings
 
 /**
+ * Member class represents a sports club member with personal details, team
+ * affiliation, and booking history.
  *
  * @author Emilio
  */
 public class Member
 {
-    private String memberNumber;
-    private String firstName;
-    private String LastName;
-    private String password;
-    private String isTeamOrganiser;
-    private String teamName;
-    private String  phone;
-    private String email;
-    private String joinDate;
-    private String address;
-    private String  DateOfBirth;
-    private List<Booking> bookings; 
 
+    // Attributes of the Member class
+    private String memberNumber;    // Unique identifier for the member
+    private String firstName;       // First name of the member
+    private String LastName;        // Last name of the member
+    private String password;        // Password for member login
+    private String isTeamOrganiser; // Indicates if the member is a team organizer (Yes/No)
+    private String teamName;        // Name of the team the member belongs to
+    private String phone;           // Member's phone number
+    private String email;           // Member's email address
+    private String joinDate;        // Date when the member joined the club
+    private String address;         // Member's home address
+    private String DateOfBirth;     // Member's date of birth
+    private List<Booking> bookings; // List to store the member's bookings
+
+    // Default constructor (creates an empty member object)
     public Member()
     {
     }
 
-    public Member(String memberNumber, String firstName, String LastName, String password, 
-                            String isTeamOrganiser, String teamName, String phone, String email, String joinDate, 
-                             String address, String DateOfBirth)
+    /**
+     * Parameterized constructor to initialize a Member object with given
+     * details.
+     */
+    public Member(String memberNumber, String firstName, String LastName, String password,
+            String isTeamOrganiser, String teamName, String phone, String email, String joinDate,
+            String address, String DateOfBirth)
     {
         this.memberNumber = memberNumber;
         this.firstName = firstName;
@@ -41,9 +51,10 @@ public class Member
         this.joinDate = joinDate;
         this.address = address;
         this.DateOfBirth = DateOfBirth;
-        this.bookings =  new ArrayList<>();
+        this.bookings = new ArrayList<>(); // Initializes an empty booking list
     }
 
+    // Getter and Setter methods to access and modify member attributes
     public String getMemberNumber()
     {
         return memberNumber;
@@ -85,7 +96,7 @@ public class Member
     }
 
     public String isIsTeamOrganiser()
-    {
+    { // Returns "Yes" or "No"
         return isTeamOrganiser;
     }
 
@@ -154,27 +165,44 @@ public class Member
         this.DateOfBirth = DateOfBirth;
     }
 
+    /**
+     * Retrieves the list of bookings made by the member.
+     *
+     * @return List of bookings
+     */
     public List<Booking> getBookings()
     {
         return bookings;
     }
 
+    /**
+     * Sets the member's booking list.
+     *
+     * @param bookings List of bookings
+     */
     public void setBookings(List<Booking> bookings)
     {
         this.bookings = bookings;
     }
-    
-    
+
+    /**
+     * Adds a booking to the member's booking list.
+     *
+     * @param booking The booking to be added
+     */
     public void addBooking(Booking booking)
     {
         bookings.add(booking);
     }
-    
-    public  boolean validatePassword(String inputPassword)
+
+    /**
+     * Validates if the provided password matches the member's password.
+     *
+     * @param inputPassword Password entered by the user
+     * @return True if the password matches, false otherwise
+     */
+    public boolean validatePassword(String inputPassword)
     {
         return this.password.equals(inputPassword);
     }
-    
-    
-   
 }

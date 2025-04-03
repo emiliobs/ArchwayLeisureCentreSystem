@@ -1,56 +1,73 @@
-package Data;
+package Data; // Defines the package where this class belongs
 
-import Businness.Booking;
-import Businness.Member;
+import Businness.Booking;// Imports the Booking class from the Business package
+import Businness.Member;// Imports the Member class from the Business package
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * The DataStorage class acts as an in-memory database to store members and bookings.
+ * It provides methods to add and retrieve data, as well as preload sample data.
+ * 
  * @author Emilio
  */
-public class DataStorage
-{
+public class DataStorage {
 
+    // Static lists to store members and bookings, acting as in-memory databases
     public static List<Member> members = new ArrayList<>();
     public static List<Booking> bookings = new ArrayList<>();
 
-    public static void addMember(Member member)
-    {
+    /**
+     * Adds a new member to the list.
+     * @param member The Member object to be added.
+     */
+    public static void addMember(Member member) {
         members.add(member);
     }
 
-    public static void addBooking(Booking booking)
-    {
+    /**
+     * Adds a new booking to the list.
+     * @param booking The Booking object to be added.
+     */
+    public static void addBooking(Booking booking) {
         bookings.add(booking);
     }
 
-    public static Member findMemberByNumber(String inputNumberNumber)
-    {
-        for (Member member : members)
-        {
-            if (member.getMemberNumber().equals(inputNumberNumber))
-            {
-                return member;
+    /**
+     * Searches for a member in the list using their unique member number.
+     * @param inputMemberNumber The member number to search for.
+     * @return The Member object if found, otherwise returns null.
+     */
+    public static Member findMemberByNumber(String inputMemberNumber) {
+        for (Member member : members) { // Loops through the list of members
+            if (member.getMemberNumber().equals(inputMemberNumber)) { // Compares member numbers
+                return member; // Returns the matching member
             }
-
         }
-
-        return null;
+        return null; // Returns null if no match is found
     }
 
-    public static List<Member> getMembers()
-    {
+    /**
+     * Returns the list of all members.
+     * @return List of members.
+     */
+    public static List<Member> getMembers() {
         return members;
     }
-    
-    public static  List<Booking> getBookings()
-    {
+
+    /**
+     * Returns the list of all bookings.
+     * @return List of bookings.
+     */
+    public static List<Booking> getBookings() {
         return bookings;
     }
 
-    public static void preloadMembers()
-    {
+    /**
+     * Preloads sample members into the system.
+     * This method is useful for testing or initializing the system with default data.
+     */
+    public static void preloadMembers() {
         members.add(new Member("E55555", "Emilio", "Barrera", "55555", "Yes", "Team Strong", "1234567890", "emilio@mail.com", "2023-01-15", "55555 Street, London", "1995/05/20"));
         members.add(new Member("M001", "Alice", "Johnson", "pass123", "No", "Team Alpha", "1234567890", "alice@mail.com", "2023-01-15", "123 Street, London", "1995/05/20"));
         members.add(new Member("M002", "Bob", "Smith", "bobpass", "No", "Team Beta", "0987654321", "bob@mail.com", "2022-03-10", "456 Avenue, Manchester", "1992/07/11"));
@@ -63,22 +80,22 @@ public class DataStorage
         members.add(new Member("M009", "Isla", "Thomas", "islaPass", "Yes", "Team Delta", "7778889999", "isla@mail.com", "2020-04-25", "987 Drive, Newcastle", "1999/01/05"));
         members.add(new Member("M010", "Jack", "White", "jack321", "Yes", "Team Omega", "8889990000", "jack@mail.com", "2018-12-10", "159 Walk, Bristol", "1989/10/29"));
     }
-    
-    public static void preloadBooking()
-    {
-        bookings.add(new Booking("M55555", "Emilio Barrera", "04/04/2025", "5:00 PM" , "Pitch 5"));
-        bookings.add(new Booking("M001"  , "Alice Johnson" , "04/04/2025", "10:00 AM", "Pitch 1"));
-        bookings.add(new Booking("M002"  , "Bob Smith"     , "23/01/2025", "11:00 AM", "Pitch 2"));
-        bookings.add(new Booking("M003"  , "Charlie Brown" , "20/03/2025", "12:00 PM", "Pitch 3"));
-        bookings.add(new Booking("M004"  , "David Miller"  , "14/01/2025", "01:00 PM", "Pitch 1"));
-        bookings.add(new Booking("M005"  , "Ella Davis"    , "12/02/2025", "02:00 PM", "Pitch 2"));
-        bookings.add(new Booking("M006"  , "Frank Wilson"  , "23/03/2025", "03:00 PM", "Pitch 3"));
-        bookings.add(new Booking("M007"  , "Grace Anderson", "04/04/2025", "04:00 PM", "Pitch 1"));
-        bookings.add(new Booking("M008"  , "Henry Moore"   , "03/04/2025", "05:00 PM", "Pitch 2"));
-        bookings.add(new Booking("M009"  , "Isla Thomas"   , "02/04/2025", "06:00 PM", "Pitch 3"));
-        bookings.add(new Booking("M010"  , "Jack White"    , "01/04/2025", "07:00 PM", "Pitch 1"));
+
+    /**
+     * Preloads sample bookings into the system.
+     * This method is useful for testing or initializing the system with default bookings.
+     */
+    public static void preloadBooking() {
+        bookings.add(new Booking("M55555", "Emilio Barrera", "04/04/2025", "5:00 PM", "Pitch 5"));
+        bookings.add(new Booking("M001", "Alice Johnson", "04/04/2025", "10:00 AM", "Pitch 1"));
+        bookings.add(new Booking("M002", "Bob Smith", "23/01/2025", "11:00 AM", "Pitch 2"));
+        bookings.add(new Booking("M003", "Charlie Brown", "20/03/2025", "12:00 PM", "Pitch 3"));
+        bookings.add(new Booking("M004", "David Miller", "14/01/2025", "01:00 PM", "Pitch 1"));
+        bookings.add(new Booking("M005", "Ella Davis", "12/02/2025", "02:00 PM", "Pitch 2"));
+        bookings.add(new Booking("M006", "Frank Wilson", "23/03/2025", "03:00 PM", "Pitch 3"));
+        bookings.add(new Booking("M007", "Grace Anderson", "04/04/2025", "04:00 PM", "Pitch 1"));
+        bookings.add(new Booking("M008", "Henry Moore", "03/04/2025", "05:00 PM", "Pitch 2"));
+        bookings.add(new Booking("M009", "Isla Thomas", "02/04/2025", "06:00 PM", "Pitch 3"));
+        bookings.add(new Booking("M010", "Jack White", "01/04/2025", "07:00 PM", "Pitch 1"));
     }
-    
-    
-       
 }
