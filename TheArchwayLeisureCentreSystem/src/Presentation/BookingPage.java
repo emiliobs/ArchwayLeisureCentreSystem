@@ -80,7 +80,7 @@ public class BookingPage extends javax.swing.JFrame
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel1.setText("Booking");
+        jLabel1.setText("Pitch Booking");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 51, 0));
@@ -281,15 +281,15 @@ public class BookingPage extends javax.swing.JFrame
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(481, 481, 481))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnBooking)
                         .addGap(111, 111, 111)
                         .addComponent(btnClean)
                         .addGap(123, 123, 123)
                         .addComponent(btnSalir)
-                        .addGap(251, 251, 251))))
+                        .addGap(251, 251, 251))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(390, 390, 390))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
