@@ -4,8 +4,7 @@
 
 
  ## Register Page
-![image](https://github.com/user-attachments/assets/cd77757a-0d9d-42d5-ab4e-e60c4b20a84a)
-
+![image](https://github.com/user-attachments/assets/de372065-8424-4ca0-919d-23b928b8cc2e)
 
 
  ## Login Page
@@ -13,7 +12,9 @@
 
 
  ## Booking Page!
- ![image](https://github.com/user-attachments/assets/0c016ac1-4993-40b6-8761-7b63211b22f4)
+ ![image](https://github.com/user-attachments/assets/a73a3138-20dc-4d8d-9d1f-be91ca699e50)
+
+
 
 
 
