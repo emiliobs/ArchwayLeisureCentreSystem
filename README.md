@@ -4,8 +4,7 @@
 
 
  ## Register Page
-![image](https://github.com/user-attachments/assets/cd77757a-0d9d-42d5-ab4e-e60c4b20a84a)
-
+![image](https://github.com/user-attachments/assets/de372065-8424-4ca0-919d-23b928b8cc2e)
 
 
  ## Login Page
